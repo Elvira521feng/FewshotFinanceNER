@@ -16,10 +16,10 @@ import torch
 from torch import nn
 import numpy as np
 
-from file_utils import get_file_name_base_on_postfix
-from logger import _init_logger
+from ...io.file_utils import _get_file_name_base_on_postfix
+from ...io.file_utils import _get_bert_dir
+from ...core import logger
 
-logger = _init_logger(path=None, level='INFO')
 
 CONFIG_FILE = 'config.json'
 WEIGHTS_NAME = 'pytorch_model.bin'
@@ -520,18 +520,14 @@ class BertModel(nn.Module):
         kwargs.pop('from_tf', None)
 
         # get model dir from name or dir
-        if os.path.isdir(os.path.abspath(os.path.expanduser(model_dir_or_name))):
-            pretrained_model_dir = os.path.abspath(os.path.expanduser(model_dir_or_name))
-        else:
-            logger.error(f"Cannot recognize BERT dir or name ``{model_dir_or_name}``.")
-            raise ValueError(f"Cannot recognize BERT dir or name ``{model_dir_or_name}``.")
+        pretrained_model_dir = _get_bert_dir(model_dir_or_name)
 
         # Load config
-        config_file = get_file_name_base_on_postfix(pretrained_model_dir, '.json')
+        config_file = _get_file_name_base_on_postfix(pretrained_model_dir, '.json')
         config = BertConfig.from_json_file(config_file)
 
         if state_dict is None:
-            weights_path = get_file_name_base_on_postfix(pretrained_model_dir, '.bin')
+            weights_path = _get_file_name_base_on_postfix(pretrained_model_dir, '.bin')
             state_dict = torch.load(weights_path, map_location='cpu')
         else:
             logger.error(f'Cannot load parameters through `state_dict` variable.')

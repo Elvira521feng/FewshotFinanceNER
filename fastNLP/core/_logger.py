@@ -1,6 +1,4 @@
 r"""
-此模块来源于fastnlp：
-
 Logger 是fastNLP中记录日志的模块，logger封装了logging模块的Logger，
 具体使用方式与直接使用logging.Logger相同，同时也新增一些简单好用的API
 使用方式：
