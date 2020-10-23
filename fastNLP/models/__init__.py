@@ -48,6 +48,6 @@ from .star_transformer import StarTransEnc, STSeqCls, STNLICls, STSeqLabel
 from .seq2seq_model import TransformerSeq2SeqModel, LSTMSeq2SeqModel, Seq2SeqModel
 from .seq2seq_generator import SequenceGeneratorModel
 import sys
-from ..doc_utils import doc_process
-
-doc_process(sys.modules[__name__])
+# from ..doc_utils import doc_process
+#
+# doc_process(sys.modules[__name__])

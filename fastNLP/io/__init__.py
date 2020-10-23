@@ -121,6 +121,6 @@ from .embed_loader import EmbedLoader
 from .loader import *
 from .model_io import ModelLoader, ModelSaver
 from .pipe import *
-from ..doc_utils import doc_process
+# from ..doc_utils import doc_process
 
-doc_process(sys.modules[__name__])
+# doc_process(sys.modules[__name__])

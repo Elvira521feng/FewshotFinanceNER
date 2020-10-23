@@ -84,7 +84,7 @@ from .dropout import TimestepDropout
 from .encoder import *
 from .generator import *
 from .utils import summary
-from ..doc_utils import doc_process
+# from ..doc_utils import doc_process
 from .tokenizer import *
 
-doc_process(sys.modules[__name__])
+# doc_process(sys.modules[__name__])
